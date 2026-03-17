@@ -23,3 +23,16 @@ def processar_alunos(dados_alunos):
             resultados.append((nome, None, "Dados Inválidos/Corrompidos"))
             
     return resultados, top_student
+
+def gerar_relatorio(resultados, top_student):
+    with open("resultado.txt", "w", encoding="utf-8") as arquivo:
+        arquivo.write("=== RELATÓRIO DE DESEMPENHO ACADÊMICO ===\n\n")
+        
+        for nome, media, status in resultados:
+            if media is not None:
+                arquivo.write(f"Aluno: {nome} | Média: {media} | Situação: {status}\n")
+            else:
+                arquivo.write(f"Aluno: {nome} | Situação: {status}\n")
+                
+        arquivo.write("\n=== DESTAQUE ===\n")
+        arquivo.write(f"Top Student: {top_student['nome']} com média {round(top_student['media'], 2)}\n")

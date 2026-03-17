@@ -11,7 +11,11 @@ def main():
 
     print("Processando dados...")
     resultados, top_student = processamento.processar_alunos(alunos)
-    print("Processamento concluído com sucesso!")
+    
+    print("Gerando arquivo .txt...")
+    processamento.gerar_relatorio(resultados, top_student)
+    
+    print("Sucesso! Verifique o arquivo 'resultado.txt'.")
 
 if __name__ == "__main__":
     main()
